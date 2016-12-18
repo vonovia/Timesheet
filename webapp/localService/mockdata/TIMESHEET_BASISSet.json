@@ -1,0 +1,190 @@
+[{
+	"Username": "ENGELCH",
+	"Pernr": "1234",
+	"Company": "Vonovia SE",
+	"Department": "AM Real Estate",
+	"NameL": "Engel",
+	"NameF": "Christian",
+	"AllocatedTime": "PT8H0M0S",
+	"OvertimeCut": "PT5H0M0S"
+}, {
+	"Username": "Username 1",
+	"Pernr": "Pernr 1",
+	"Company": "Company 1",
+	"Department": "Department 1",
+	"NameL": "NameL 1",
+	"NameF": "NameF 1",
+	"AllocatedTime": "PT21H17M6S",
+	"OvertimeCut": "PT21H17M6S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%201')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%201')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 2",
+	"Pernr": "Pernr 2",
+	"Company": "Company 2",
+	"Department": "Department 2",
+	"NameL": "NameL 2",
+	"NameF": "NameF 2",
+	"AllocatedTime": "PT15H31M44S",
+	"OvertimeCut": "PT11H28M25S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%202')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%202')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 3",
+	"Pernr": "Pernr 3",
+	"Company": "Company 3",
+	"Department": "Department 3",
+	"NameL": "NameL 3",
+	"NameF": "NameF 3",
+	"AllocatedTime": "PT5H11M10S",
+	"OvertimeCut": "PT14H22M32S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%203')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%203')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 4",
+	"Pernr": "Pernr 4",
+	"Company": "Company 4",
+	"Department": "Department 4",
+	"NameL": "NameL 4",
+	"NameF": "NameF 4",
+	"AllocatedTime": "PT3H4M14S",
+	"OvertimeCut": "PT8H25M51S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%204')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%204')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 5",
+	"Pernr": "Pernr 5",
+	"Company": "Company 5",
+	"Department": "Department 5",
+	"NameL": "NameL 5",
+	"NameF": "NameF 5",
+	"AllocatedTime": "PT2H11M22S",
+	"OvertimeCut": "PT4H9M35S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%205')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%205')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 6",
+	"Pernr": "Pernr 6",
+	"Company": "Company 6",
+	"Department": "Department 6",
+	"NameL": "NameL 6",
+	"NameF": "NameF 6",
+	"AllocatedTime": "PT2H3M0S",
+	"OvertimeCut": "PT13H13M4S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%206')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%206')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 7",
+	"Pernr": "Pernr 7",
+	"Company": "Company 7",
+	"Department": "Department 7",
+	"NameL": "NameL 7",
+	"NameF": "NameF 7",
+	"AllocatedTime": "PT7H33M19S",
+	"OvertimeCut": "PT2H56M13S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%207')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%207')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 8",
+	"Pernr": "Pernr 8",
+	"Company": "Company 8",
+	"Department": "Department 8",
+	"NameL": "NameL 8",
+	"NameF": "NameF 8",
+	"AllocatedTime": "PT19H20M16S",
+	"OvertimeCut": "PT9H40M14S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%208')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%208')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 9",
+	"Pernr": "Pernr 9",
+	"Company": "Company 9",
+	"Department": "Department 9",
+	"NameL": "NameL 9",
+	"NameF": "NameF 9",
+	"AllocatedTime": "PT10H0M19S",
+	"OvertimeCut": "PT12H22M44S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%209')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%209')/toSlots"
+		}
+	}
+}, {
+	"Username": "Username 10",
+	"Pernr": "Pernr 10",
+	"Company": "Company 10",
+	"Department": "Department 10",
+	"NameL": "NameL 10",
+	"NameF": "NameF 10",
+	"AllocatedTime": "PT5H21M35S",
+	"OvertimeCut": "PT14H15M44S",
+	"__metadata": {
+		"uri": "TIMESHEET_BASISSet('Username%2010')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('Username%2010')/toSlots"
+		}
+	}
+}]

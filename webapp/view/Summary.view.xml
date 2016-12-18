@@ -1,0 +1,92 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+	controllerName="vonovia.timesheet.controller.Summary">
+	<sap.m.semantic:FullscreenPage xmlns:sap.m.semantic="sap.m.semantic" title="Semantic Page" id="__page1" showNavButton="true"
+		navButtonPress="onNavBack">
+		<sap.m.semantic:content>
+			<ObjectListItem  type="Active" title="{NameF} {NameL}" intro="Zeiterfassung" id="nameText">
+				<attributes>
+					<ObjectAttribute text="{Pernr}" id="pernrText"/>
+				</attributes>
+				<firstStatus>
+					<ObjectStatus text="{Company}" id="__status0" title="Unternehmen"/>
+				</firstStatus>
+				<secondStatus>
+					<ObjectStatus text="{Department}" id="__status1" title="Abteilung"/>
+				</secondStatus>
+			</ObjectListItem>
+			<Table items="{ path: 'toSlots', sorter: { path: 'SlotDate', descending: false } }"
+				noDataText="Drop column list items here and columns in the area above" id="__table0">
+				<items>
+					<ColumnListItem id="__item1">
+						<cells>
+							<DatePicker value="{path: 'SlotDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'short', strictParsing: true}}"
+								id="__identifier0" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker0"
+								value="{path: 'StartTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker1"
+								value="{path: 'BreakDuration', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker2"
+								value="{path: 'EndTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker3"
+								value="{path: 'WorkTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker4"
+								value="{path: 'CompensationTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker5"
+								value="{path: 'AllocatedTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker6"
+								value="{path: 'Saldo', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<Text text="{Note}" id="__text1"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+				<columns>
+					<Column id="__column0">
+						<header>
+							<Label text="Datum" id="__label0"/>
+						</header>
+					</Column>
+					<Column id="__column1">
+						<header>
+							<Label text="Datum Kommen" id="__label1"/>
+						</header>
+					</Column>
+					<Column id="__column2">
+						<header>
+							<Label text="Pause" id="__label2"/>
+						</header>
+					</Column>
+					<Column id="__column3">
+						<header>
+							<Label text="Datum Gehen" id="__label3"/>
+						</header>
+					</Column>
+					<Column id="__column4">
+						<header>
+							<Label text="Arbeitszeit" id="__label4"/>
+						</header>
+					</Column>
+					<Column id="__column5">
+						<header>
+							<Label text="Ausgleich" id="__label5"/>
+						</header>
+					</Column>
+					<Column id="__column6">
+						<header>
+							<Label text="Sollzeit" id="__label6"/>
+						</header>
+					</Column>
+					<Column id="__column7">
+						<header>
+							<Label text="Saldo" id="__label7"/>
+						</header>
+					</Column>
+					<Column id="__column8">
+						<header>
+							<Label text="Bemerkung" id="__label8"/>
+						</header>
+					</Column>
+				</columns>
+			</Table>
+		</sap.m.semantic:content>
+	</sap.m.semantic:FullscreenPage>
+</mvc:View>

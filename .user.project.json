@@ -162,5 +162,8 @@
         "displayName": "App as Fiori Component"
       }
     }
-  ]
+  ],
+  "hybrid": {
+    "dirty": false
+  }
 }

@@ -12,8 +12,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true,
-    "lastBuildDateTime": "Sat, 17 Dec 2016 20:13:37 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Sun, 18 Dec 2016 17:12:16 GMT"
   },
   "dataBinding": {
     "/webapp/view/App.view.xml": {
@@ -76,7 +76,7 @@
   "hcpdeploy": {
     "account": "s0009333982trial",
     "name": "vonoviatimesheet",
-    "lastVersionWeTriedToDeploy": "1.0.0"
+    "lastVersionWeTriedToDeploy": "1.0.1"
   },
   "hybrid": {
     "FacadeConfig": {

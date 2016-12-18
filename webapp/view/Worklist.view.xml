@@ -4,7 +4,7 @@
 			<l:Grid id="__grid0">
 				<l:content>
 					<sap.ui.unified:Calendar xmlns:sap.ui.unified="sap.ui.unified" ariaLabelledBy="__xmlview0--nameColumnTitle" id="calendar" intervalSelection="true" firstDayOfWeek="1"/>
-					<sap.ui.comp.smartform:SmartForm xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" id="__form0">
+					<sap.ui.comp.smartform:SmartForm entityType="TIMESHEET_SLOTSSet" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" id="__form0">
 						<sap.ui.comp.smartform:groups>
 							<sap.ui.comp.smartform:Group label="Erfassung für User: {appView>/username}" id="__group0" useHorizontalLayout="true">
 								<sap.ui.comp.smartform:formElements>

@@ -12,7 +12,7 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": false,
+    "buildRequired": true,
     "lastBuildDateTime": "Sat, 17 Dec 2016 20:13:37 GMT"
   },
   "dataBinding": {
@@ -77,5 +77,18 @@
     "account": "s0009333982trial",
     "name": "vonoviatimesheet",
     "lastVersionWeTriedToDeploy": "1.0.0"
+  },
+  "hybrid": {
+    "FacadeConfig": {
+      "cordova-plugin-device-orientation": false,
+      "accelerometer": {},
+      "compass": {},
+      "bMockLocation": false,
+      "position": {
+        "latitude": 1.2748848,
+        "longitude": 103.7973789
+      },
+      "locations": []
+    }
   }
 }

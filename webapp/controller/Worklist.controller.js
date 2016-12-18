@@ -150,7 +150,7 @@ sap.ui.define([
 		 */
 		_showObject: function(oItem) {
 			this.getRouter().navTo("object", {
-				objectId: oItem.getBindingContext().getProperty("Username")
+				objectId: oItem.getBindingContext().getProperty("SlotDate")
 			});
 		},
 		/**

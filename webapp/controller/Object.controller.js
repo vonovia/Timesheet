@@ -100,8 +100,8 @@ sap.ui.define([
 				var sUser = this.getModel("appView").getProperty("/username");
 				this.getModel().metadataLoaded().then( function() {
 					var sObjectPath = this.getModel().createKey("TIMESHEET_SlotSet", {
-						Username : sUser
-						//Slotdate :  sObjectId
+						Username : sUser,
+						Slotdate :  sObjectId
 					});
 					this._bindView("/" + sObjectPath);
 				}.bind(this));

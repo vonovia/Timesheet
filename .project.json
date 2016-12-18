@@ -88,7 +88,8 @@
         "latitude": 1.2748848,
         "longitude": 103.7973789
       },
-      "locations": []
+      "locations": [],
+      "bFacade": false
     }
   }
 }

@@ -15,7 +15,7 @@
 				</secondStatus>
 			</ObjectListItem>
 			<Table items="{ path: 'toSlots', sorter: { path: 'SlotDate', descending: false } }"
-				noDataText="Drop column list items here and columns in the area above" id="__table0">
+				noDataText="Drop column list items here and columns in the area above" id="table" busyIndicatorDelay="{summaryView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
 				<items>
 					<ColumnListItem id="__item1">
 						<cells>

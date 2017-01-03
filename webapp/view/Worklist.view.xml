@@ -1,50 +1,45 @@
 <mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" controllerName="vonovia.timesheet.controller.Worklist">
-	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>worklistViewTitle}">
+	<semantic:FullscreenPage busy="{worklistView>/busy}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>worklistViewTitle}">
 		<semantic:content>
 			<l:Grid id="__grid0">
 				<l:content>
 					<sap.ui.unified:Calendar xmlns:sap.ui.unified="sap.ui.unified" ariaLabelledBy="__xmlview0--nameColumnTitle" id="calendar" intervalSelection="true" firstDayOfWeek="1"/>
-					<sap.ui.comp.smartform:SmartForm entityType="TIMESHEET_SLOTSSet" xmlns:sap.ui.layout="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" id="__form0">
-						<sap.ui.comp.smartform:groups>
-							<sap.ui.comp.smartform:Group label="Erfassung für User: {appView>/username}" id="__group0" useHorizontalLayout="true">
-								<sap.ui.comp.smartform:formElements>
-									<sap.ui.comp.smartform:GroupElement xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" id="__element0_copy">
-										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartLabel xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" text="Uhrzeit für Kommen" width="100%" id="startTimeLabel"/>
-											<TimePicker xmlns="sap.m" placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker1_copy" value="{StartTime}"/>
-										</sap.ui.comp.smartform:elements>
-									</sap.ui.comp.smartform:GroupElement>
-									<sap.ui.comp.smartform:GroupElement id="__element0">
-										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartLabel text="Uhrzeit für Gehen" width="100%" id="EndTimeLabel"/>
-											<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker1" value="{EndTime}"/>
-										</sap.ui.comp.smartform:elements>
-									</sap.ui.comp.smartform:GroupElement>
-									<sap.ui.comp.smartform:GroupElement id="__element1">
-										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartLabel text="Pause" width="100%" id="BreakLabel"/>
-											<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="endTimePicker" value="{BreakDuration}"/>
-										</sap.ui.comp.smartform:elements>
-									</sap.ui.comp.smartform:GroupElement>
-									<sap.ui.comp.smartform:GroupElement id="__element3">
-										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartLabel text="Ausgleich" width="100%" id="comenstationLabel"/>
-											<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker2" value="{CompensationTime}"/>
-										</sap.ui.comp.smartform:elements>
-									</sap.ui.comp.smartform:GroupElement>
-									<sap.ui.comp.smartform:GroupElement id="__element2">
-										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartLabel text="Bemerkung" width="100%" id="TextLabel"/>
-											<TextArea id="breakDurationPicker" value="{TO_SLOTS/Note}"/>
-										</sap.ui.comp.smartform:elements>
-									</sap.ui.comp.smartform:GroupElement>
-								</sap.ui.comp.smartform:formElements>
-							</sap.ui.comp.smartform:Group>
-						</sap.ui.comp.smartform:groups>
+					<sap.ui.comp.smartform:SmartForm xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" id="smartForm" editable="true">
+					    <sap.ui.comp.smartform:groups>
+					        <sap.ui.comp.smartform:Group label="Zeiterfassung" id="__group1">
+					            <sap.ui.comp.smartform:groupElements>
+					                <sap.ui.comp.smartform:GroupElement id="__element4">
+					                    <sap.ui.comp.smartform:elements>
+					                        <sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field0" value="{StartTime}"/>
+					                    </sap.ui.comp.smartform:elements>
+					                </sap.ui.comp.smartform:GroupElement>
+					                <sap.ui.comp.smartform:GroupElement id="__element5">
+					                    <sap.ui.comp.smartform:elements>
+					                        <sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field1" value="{EndTime}"/>
+					                    </sap.ui.comp.smartform:elements>
+					                </sap.ui.comp.smartform:GroupElement>
+					                <sap.ui.comp.smartform:GroupElement id="__element6">
+					                    <sap.ui.comp.smartform:elements>
+					                        <sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field2" value="{BreakDuration}"/>
+					                    </sap.ui.comp.smartform:elements>
+					                </sap.ui.comp.smartform:GroupElement>
+					                <sap.ui.comp.smartform:GroupElement id="__element7">
+					                    <sap.ui.comp.smartform:elements>
+					                        <sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field3" value="{CompensationTime}"/>
+					                    </sap.ui.comp.smartform:elements>
+					                </sap.ui.comp.smartform:GroupElement>
+					                <sap.ui.comp.smartform:GroupElement id="__element8">
+					                    <sap.ui.comp.smartform:elements>
+					                        <sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field4" value="{Note}"/>
+					                    </sap.ui.comp.smartform:elements>
+					                </sap.ui.comp.smartform:GroupElement>
+					            </sap.ui.comp.smartform:groupElements>
+					        </sap.ui.comp.smartform:Group>
+					    </sap.ui.comp.smartform:groups>
 					</sap.ui.comp.smartform:SmartForm>
 				</l:content>
 			</l:Grid>
-			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: '/TIMESHEET_SLOTSet', sorter: { path: 'SlotDate', descending: false } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+			<Table busy="{worklistView>/busy}" id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: 'toSlots', sorter: { path: 'SlotDate', descending: false } }" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
 				<headerToolbar>
 					<Toolbar>
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
@@ -67,9 +62,9 @@
 						</header>
 					</Column>
 					<Column id="__column2">
-					    <header>
-					        <Text text="Saldo" id="__text2"/>
-					    </header>
+						<header>
+							<Text text="Saldo" id="__text2"/>
+						</header>
 					</Column>
 				</columns>
 				<items>
@@ -93,8 +88,10 @@
 		<semantic:saveAsTileAction>
 			<footerbar:AddBookmarkButton id="shareTile" title="{worklistView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
+		<semantic:saveAction>
+			<semantic:SaveAction id="__action0" press="onSave"/>
+		</semantic:saveAction>
 		<semantic:customFooterContent>
-			<Button text="Speichern" width="100px" id="save" type="Emphasized" press="onSave"/>
 			<Button text="Senden" width="100px" id="send" press="_showSummary"/>
 		</semantic:customFooterContent>
 	</semantic:FullscreenPage>

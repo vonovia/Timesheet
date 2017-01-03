@@ -13,7 +13,7 @@
       "test.html"
     ],
     "buildRequired": false,
-    "lastBuildDateTime": "Sun, 18 Dec 2016 17:12:16 GMT"
+    "lastBuildDateTime": "Tue, 03 Jan 2017 09:03:36 GMT"
   },
   "dataBinding": {
     "/webapp/view/App.view.xml": {
@@ -76,7 +76,7 @@
   "hcpdeploy": {
     "account": "s0009333982trial",
     "name": "vonoviatimesheet",
-    "lastVersionWeTriedToDeploy": "1.0.1"
+    "lastVersionWeTriedToDeploy": "1.0.2"
   },
   "hybrid": {
     "FacadeConfig": {
@@ -91,5 +91,9 @@
       "locations": [],
       "bFacade": false
     }
+  },
+  "deploy": {
+    "destination": "F60",
+    "name": "Z_UI_TIMES"
   }
 }

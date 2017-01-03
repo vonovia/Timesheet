@@ -16,8 +16,10 @@ sap.ui.define([
 				var fnGetUser = jQuery.sap.getObject("sap.ushell.Container.getUser"),
 					bIsShareInJamActive = fnGetUser ? fnGetUser().isJamActive() : false,
 					oModel = new JSONModel({
-						isShareInJamActive: bIsShareInJamActive
+						isShareInJamActive: bIsShareInJamActive,
+						username : sap.ushell.Container.getUser().getId()
 					});
+				oModel.setProperty("/username", "ENGELCH");	
 				oModel.setDefaultBindingMode("OneWay");
 				return oModel;
 			}

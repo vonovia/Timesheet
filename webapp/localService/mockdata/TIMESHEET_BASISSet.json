@@ -6,7 +6,16 @@
 	"NameL": "Engel",
 	"NameF": "Christian",
 	"AllocatedTime": "PT8H0M0S",
-	"OvertimeCut": "PT5H0M0S"
+	"OvertimeCut": "PT5H0M0S",
+		"__metadata": {
+		"uri": "TIMESHEET_BASISSet('ENGELCH')",
+		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS"
+	},
+	"toSlots": {
+		"__deferred": {
+			"uri": "TIMESHEET_BASISSet('ENGELCH')/toSlots"
+		}
+	}
 }, {
 	"Username": "Username 1",
 	"Pernr": "Pernr 1",

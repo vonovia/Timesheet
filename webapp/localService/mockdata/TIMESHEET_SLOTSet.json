@@ -15,7 +15,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%201',SlotDate=datetime'2008-10-04T18%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161201"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 2",
@@ -33,7 +34,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%202',SlotDate=datetime'2004-09-23T18%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161202"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 3",
@@ -51,7 +53,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%203',SlotDate=datetime'2017-06-16T18%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161205"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 4",
@@ -69,7 +72,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%204',SlotDate=datetime'2006-06-24T18%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161206"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 5",
@@ -87,7 +91,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%205',SlotDate=datetime'2000-01-26T19%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161207"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 6",
@@ -105,7 +110,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%206',SlotDate=datetime'2009-01-23T19%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161208"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 7",
@@ -123,7 +129,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%207',SlotDate=datetime'2000-08-20T18%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161209"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 8",
@@ -141,7 +148,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%208',SlotDate=datetime'2001-02-11T19%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161212"
 }, {
 	"Username": "ENGELCH",
 	"SlotMonth": "SlotMonth 9",
@@ -159,7 +167,8 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%209',SlotDate=datetime'2000-02-12T19%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161213"
 }, {
 	"Username": "Username 10",
 	"SlotMonth": "SlotMonth 10",
@@ -177,5 +186,6 @@
 	"__metadata": {
 		"uri": "TIMESHEET_SLOTSet(Username='Username%2010',SlotDate=datetime'2017-02-27T19%3A01%3A52')",
 		"type": "/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT"
-	}
+	},
+	"SlotKey": "20161214"
 }]

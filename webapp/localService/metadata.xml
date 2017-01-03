@@ -13,30 +13,31 @@
                 <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Personalnr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Gesellschaft" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Abteilung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="NameL" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Nachname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameL" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Nachname" sap:creatable="false" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="NameF" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Vorname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="AllocatedTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Sollzeit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="OvertimeCut" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Abgegoltene �berstunden" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OvertimeCut" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Abgegoltene Überstunden" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <NavigationProperty Name="toSlots" Relationship="/VTIS/UI_TIMESHEET_SRV.TO_SLOTS" FromRole="FromRole_TO_SLOTS" ToRole="ToRole_TO_SLOTS"/>
             </EntityType>
             <EntityType Name="TIMESHEET_SLOT" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Username"/>
-                    <PropertyRef Name="SlotDate"/>
+                    <PropertyRef Name="SlotKey"/>
                 </Key>
+                <Property Name="SlotKey" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Slot Key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Benutzername" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SlotMonth" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Monat" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="SlotDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Datum" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="FreeDay" Type="Edm.Boolean" Nullable="false" sap:label="Freier Tag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="StartTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit f�r Kommen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="EndTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit f�r Gehen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="BreakDuration" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Pause" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit für Kommen" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EndTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit für Gehen" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BreakDuration" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Pause" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="PresenceTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Anwesenheit in Stunden" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="WorkTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Arbeitszeit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="CompensationTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Ausgleich" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompensationTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Ausgleich" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="AllocatedTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Sollzeit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Saldo" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Tagessaldo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Note" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Bemerkungen" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Bemerkungen" sap:creatable="true" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
             <Association Name="TO_SLOTS" sap:content-version="1">
                 <End Type="/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS" Multiplicity="1" Role="FromRole_TO_SLOTS"/>
@@ -52,8 +53,8 @@
             </Association>
             <EntityContainer Name="/VTIS/UI_TIMESHEET_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="TIMESHEET_BASISSet" EntityType="/VTIS/UI_TIMESHEET_SRV.TIMESHEET_BASIS" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <EntitySet Name="TIMESHEET_SLOTSet" EntityType="/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                <AssociationSet Name="TO_SLOTSSet" Association="/VTIS/UI_TIMESHEET_SRV.TO_SLOTS" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                <EntitySet Name="TIMESHEET_SLOTSet" EntityType="/VTIS/UI_TIMESHEET_SRV.TIMESHEET_SLOT" sap:creatable="true" sap:updatable="true" sap:deletable="false" sap:pageable="true" sap:content-version="1"/>
+                <AssociationSet Name="TO_SLOTSSet" Association="/VTIS/UI_TIMESHEET_SRV.TO_SLOTS" sap:creatable="true" sap:updatable="true" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="TIMESHEET_BASISSet" Role="FromRole_TO_SLOTS"/>
                     <End EntitySet="TIMESHEET_SLOTSet" Role="ToRole_TO_SLOTS"/>
                 </AssociationSet>

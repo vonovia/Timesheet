@@ -5,8 +5,7 @@
       "target": {
         "type": "service",
         "name": "sapui5",
-        "entryPath": "/resources",
-        "version": "1.38.6"
+        "entryPath": "/resources"
       },
       "description": "SAPUI5 Resources"
     },
@@ -15,8 +14,7 @@
       "target": {
         "type": "service",
         "name": "sapui5",
-        "entryPath": "/test-resources",
-        "version": "1.38.6"
+        "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
     },
@@ -25,8 +23,7 @@
       "target": {
         "type": "service",
         "name": "sapui5",
-        "entryPath": "/resources",
-        "version": "1.38.6"
+        "entryPath": "/resources"
       },
       "description": "SAPUI5 Resources"
     },
@@ -35,8 +32,7 @@
       "target": {
         "type": "service",
         "name": "sapui5",
-        "entryPath": "/test-resources",
-        "version": "1.38.6"
+        "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
     },
@@ -48,6 +44,15 @@
         "entryPath": "/sap"
       },
       "description": "F60 Dev System"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "F60",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "F60"
     }
   ],
   "cacheControl": [

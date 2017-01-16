@@ -157,7 +157,7 @@ sap.ui.define([
 		 */
 		_showObject: function(oItem) {
 			this.getRouter().navTo("object", {
-				objectId: oItem.getBindingContext().getProperty("SlotDate")
+				objectId: oItem.getBindingContext().getProperty("Keyvalue")
 			});
 		},
 		/**
@@ -201,13 +201,17 @@ sap.ui.define([
 			// create default properties
 			var oProperties = {
 				Username: sUsername,
-				SlotMonth: "12",
+				SlotMonth: "01",
 				//AllocatedTime: sTime,
-				SlotKey: "20170101"
+				Keyvalue: "20170111",
+				SlotDate: new Date("2017/11/01"),
+				PresenceTime: "PT9H0M0S",
+				AllocatedTime: "PT9H0M0S",
+				WorkTime: "PT9H0M0S"
 			};
 
 			// create new entry in the model
-			this._oContext = this.getModel().createEntry(sObjectPath + "/toSlots", {
+			this._oContext = this.getModel().createEntry(sObjectPath + "/Slots", {
 				properties: oProperties,
 				success: this._onCreateSuccess.bind(this)
 			});
@@ -246,7 +250,7 @@ sap.ui.define([
 			this.getView().bindElement({
 				path: sObjectPath,
 				parameters: {
-					expand: "toSlots"
+					expand: "Slots"
 				}
 			});
 		}

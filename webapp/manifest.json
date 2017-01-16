@@ -17,11 +17,19 @@
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
 				}
+			},
+			"UI_TIMESHEET_V2_SRV": {
+				"uri": "/sap/opu/odata/vtis/UI_TIMESHEET_V2_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/UI_TIMESHEET_V2_SRV/metadata.xml"
+				}
 			}
 		},
 		"sourceTemplate": {
-			"id": "sap.ui.ui5-template-plugin.1worklist",
-			"version": "1.38.3"
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
 		}
 	},
 	"sap.ui": {
@@ -76,7 +84,7 @@
 				}
 			},
 			"": {
-				"dataSource": "mainService",
+				"dataSource": "UI_TIMESHEET_V2_SRV",
 				"preload": true,
 				"settings": {
 					"defaultBindingMode": "TwoWay"

@@ -1,0 +1,67 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="/VTIS/UI_TIMESHEET_V2_SRV" xml:lang="de" sap:schema-version="1">
+            <EntityType Name="TIMESHEET_SLOT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Username"/>
+                    <PropertyRef Name="Keyvalue"/>
+                </Key>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Benutzername" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Keyvalue" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Slot Key" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlotDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:label="Datum" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlotMonth" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Monat" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StartTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit für Kommen" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EndTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Uhrzeit für Gehen" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BreakDuration" Type="Edm.Time" Precision="0" sap:label="Pause" sap:filterable="false"/>
+                <Property Name="CompensationTime" Type="Edm.Time" Precision="0" sap:label="Ausgleich" sap:filterable="false"/>
+                <Property Name="Note" Type="Edm.String" MaxLength="100" sap:label="Bemerkungen" sap:filterable="false"/>
+                <Property Name="PresenceTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Anwesenheit in Stunden" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AllocatedTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Sollzeit" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Freeday" Type="Edm.Boolean" sap:label="Freier Tag" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="WorkTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Arbeitszeit" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="TIMESHEET_BASIS" sap:is-thing-type="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Username"/>
+                </Key>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Benutzername" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:label="Personalnr" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Firstname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Vorname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lastname" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Nachname" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Company" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Firma" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Abteilung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AllocatedTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Sollzeit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Overtimecut" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Abgegoltene Stunden" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Slots" Relationship="/VTIS/UI_TIMESHEET_V2_SRV.ToSlots" FromRole="FromRole_ToSlots" ToRole="ToRole_ToSlots"/>
+            </EntityType>
+            <Association Name="ToSlots" sap:content-version="1">
+                <End Type="/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_BASIS" Multiplicity="1" Role="FromRole_ToSlots"/>
+                <End Type="/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT" Multiplicity="*" Role="ToRole_ToSlots"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ToSlots">
+                        <PropertyRef Name="Username"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ToSlots">
+                        <PropertyRef Name="Username"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="/VTIS/UI_TIMESHEET_V2_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="TIMESHEET_SLOTSet" EntityType="/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT" sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TIMESHEET_BASISSet" EntityType="/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_BASIS" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ToSlotsSet" Association="/VTIS/UI_TIMESHEET_V2_SRV.ToSlots" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="TIMESHEET_BASISSet" Role="FromRole_ToSlots"/>
+                    <End EntitySet="TIMESHEET_SLOTSet" Role="ToRole_ToSlots"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./vtis/UI_TIMESHEET_V2_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./vtis/UI_TIMESHEET_V2_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

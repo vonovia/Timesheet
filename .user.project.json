@@ -1,34 +1,6 @@
 {
   "run": [
     {
-      "filePath": "/vonoviaTimesheet1/webapp/test/flpSandboxMockServer.html",
-      "previewMode": 1,
-      "dataMode": 1,
-      "workspace": "withoutWorkspace",
-      "urlParameters": [
-        {
-          "paramName": "sap-language ",
-          "paramValue": "de",
-          "paramActive": false
-        },
-        {
-          "paramName": "",
-          "paramValue": "",
-          "paramActive": false
-        }
-      ],
-      "hashParameter": "Zeiterfassung-display",
-      "ui5ActiveVersion": null,
-      "ui5VerSource": null,
-      "isDefaultVersion": 1,
-      "_metadata": {
-        "id": 1978926,
-        "runnerId": "webapprunner",
-        "displayName": "App in FLP Sandbox (Mock Server)",
-        "lastRunTimeStamp": 1483434048133
-      }
-    },
-    {
       "filePath": "/vonoviaTimesheet1/webapp/test/flpSandbox.html",
       "previewMode": 1,
       "dataMode": 1,
@@ -53,7 +25,35 @@
         "id": 1978925,
         "runnerId": "webapprunner",
         "displayName": "App in FLP Sandbox",
-        "lastRunTimeStamp": 1483357932204
+        "lastRunTimeStamp": 1484318489724
+      }
+    },
+    {
+      "filePath": "/vonoviaTimesheet1/webapp/test/flpSandboxMockServer.html",
+      "previewMode": 1,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "urlParameters": [
+        {
+          "paramName": "sap-language ",
+          "paramValue": "de",
+          "paramActive": false
+        },
+        {
+          "paramName": "",
+          "paramValue": "",
+          "paramActive": false
+        }
+      ],
+      "hashParameter": "Zeiterfassung-display",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 1,
+      "_metadata": {
+        "id": 1978926,
+        "runnerId": "webapprunner",
+        "displayName": "App in FLP Sandbox (Mock Server)",
+        "lastRunTimeStamp": 1484300407536
       }
     },
     {

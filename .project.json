@@ -12,7 +12,7 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": false,
+    "buildRequired": true,
     "lastBuildDateTime": "Tue, 03 Jan 2017 09:03:36 GMT"
   },
   "dataBinding": {
@@ -45,6 +45,11 @@
       "templateId": "ui5template.basicSAPUI5ApplicationComponent",
       "templateVersion": "1.4.0",
       "dateTimeStamp": "Fri, 16 Dec 2016 15:25:02 GMT"
+    },
+    {
+      "templateId": "servicecatalog.connectivityComponent",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Fri, 13 Jan 2017 09:39:42 GMT"
     }
   ],
   "codeCheckingTriggers": {
@@ -61,7 +66,7 @@
     "resourceModelName": "i18n"
   },
   "mockpreview": {
-    "mockUri": "/here/goes/your/serviceurl/",
+    "mockUri": "/sap/opu/odata/vtis/UI_TIMESHEET_V2_SRV",
     "metadataFilePath": "localService/metadata.xml",
     "loadJSONFiles": true,
     "loadCustomRequests": false,

@@ -101,7 +101,7 @@ sap.ui.define([
 				this.getModel().metadataLoaded().then( function() {
 					var sObjectPath = this.getModel().createKey("TIMESHEET_SlotSet", {
 						Username : sUser,
-						Slotdate :  sObjectId
+						Keyvalue :  sObjectId
 					});
 					this._bindView("/" + sObjectPath);
 				}.bind(this));
@@ -150,7 +150,7 @@ sap.ui.define([
 
 				var oResourceBundle = this.getResourceBundle(),
 					oObject = oView.getBindingContext().getObject(),
-					sObjectId = oObject.SlotDate,
+					sObjectId = oObject.Keyvalue,
 					sObjectName = oObject.SlotDate;
 
 				// Everything went fine.

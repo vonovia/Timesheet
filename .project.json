@@ -13,7 +13,7 @@
       "test.html"
     ],
     "buildRequired": true,
-    "lastBuildDateTime": "Tue, 03 Jan 2017 09:03:36 GMT"
+    "lastBuildDateTime": "Mon, 16 Jan 2017 15:13:02 GMT"
   },
   "dataBinding": {
     "/webapp/view/App.view.xml": {
@@ -66,8 +66,8 @@
     "resourceModelName": "i18n"
   },
   "mockpreview": {
-    "mockUri": "/sap/opu/odata/vtis/UI_TIMESHEET_V2_SRV",
-    "metadataFilePath": "localService/metadata.xml",
+    "mockUri": "/sap/opu/odata/vtis/UI_TIMESHEET_V2_SRV/",
+    "metadataFilePath": "localService/UI_TIMESHEET_V2_SRV/metadata.xml",
     "loadJSONFiles": true,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""

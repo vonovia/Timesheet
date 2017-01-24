@@ -166,6 +166,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_applySearch: function(oTableSearchState) {
+			/** @type sap.m.table */
 			var oTable = this.byId("table"),
 				oViewModel = this.getModel("worklistView");
 			oTable.getBinding("items").filter(oTableSearchState, "Application");

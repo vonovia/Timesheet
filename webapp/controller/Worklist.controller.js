@@ -10,6 +10,8 @@ sap.ui.define([
 	"use strict";
 	return BaseController.extend("vonovia.timesheet.controller.Worklist", {
 		formatter: formatter,
+		oFormatYyyymmdd: null,
+		_sObjectPath: null,
 		/* =========================================================== */
 		/* lifecycle methods                                           */
 		/* =========================================================== */
@@ -37,7 +39,7 @@ sap.ui.define([
 				busy: true
 			});
 			this.setModel(oViewModel, "worklistView");
-			
+
 			this.getRouter().attachRoutePatternMatched(this._initalizeView, this);
 			// Make sure, busy indication is showing immediately so there is no
 			// break after the busy indication for loading the view's meta data is
@@ -49,6 +51,8 @@ sap.ui.define([
 				// initalize new Entry Fields
 			});
 			//this.getOwnerComponent().getModel().metadataLoaded().then(this._initalizeView());
+
+			this.oFormatYyyymmdd = sap.ui.core.format.DateFormat.getDateInstance({pattern : "YYYYMMdd"});
 
 		},
 		/* =========================================================== */
@@ -146,6 +150,25 @@ sap.ui.define([
 			var oTable = this.byId("table");
 			oTable.getBinding("items").refresh();
 		},
+
+		handleCalendarSelect: function(oEvent) {
+			var oCalendar = oEvent.oSource;
+			var aSelectedDates = oCalendar.getSelectedDates();
+			var oDate;
+			var oData = {
+				selectedDates: []
+			};
+			if (aSelectedDates.length > 0) {
+				for (var i = 0; i < aSelectedDates.length; i++) {
+					oDate = aSelectedDates[i].getStartDate();
+					oDate.setHours(5);
+					oData.selectedDates.push(oDate);
+				}
+				this.setModel(oData, "dataCalendar");
+			} else {
+				this.setModel(oData, "dataCalendar");
+			}
+		},
 		/* =========================================================== */
 		/* internal methods                                            */
 		/* =========================================================== */
@@ -179,7 +202,46 @@ sap.ui.define([
 		 *@memberOf vonovia.timesheet.controller.Worklist
 		 */
 		onSave: function() {
-			this.getModel().submitChanges();
+			var oData = this.getModel("dataCalendar");
+			var oContext = this.getView().byId("smartForm").getBindingContext();
+			var oProperties = oContext.getObject();
+			var oModel = oContext.getModel();
+			var sPath = oContext.getPath();
+			var oPropertiesNew = {
+					Username: oProperties.sUsername,
+					SlotMonth: "02",
+					//AllocatedTime: sTime,
+					//Keyvalue: "20170202",
+					//SlotDate: new Date("2017/01/02"),
+					PresenceTime: "PT9H0M0S",
+					AllocatedTime: "PT9H0M0S",
+					WorkTime: "PT9H0M0S",
+					StartTime: oProperties.StartTime,
+					EndTime: oProperties.EndTime
+				};
+			
+			if (oData && oData.selectedDates.length > 0) {
+				for (var i = 0; i < oData.selectedDates.length; i++) {
+					oPropertiesNew.Keyvalue = this.oFormatYyyymmdd.format(oData.selectedDates[i]);
+					oPropertiesNew.SlotDate = oData.selectedDates[i];
+					oPropertiesNew.SlotMonth = oData.selectedDates[i].getMonth() + 1;
+					if (i === 0) {
+						oModel.setProperty(sPath + "/Keyvalue", oPropertiesNew.Keyvalue);
+						oModel.setProperty(sPath + "/SlotDate", oPropertiesNew.SlotDate);
+						oModel.setProperty(sPath + "/SlotMonth", oPropertiesNew.SlotMonth.toString());
+						//oModel.refresh();
+						
+						//var object = oModel.getProperty(sPath + "/Keyvalue");
+					} else {
+
+						oModel.createEntry(this._sObjectPath + "/Slots", {
+							properties: oPropertiesNew,
+							success: this._onCreateSuccess.bind(this)
+						});
+					}
+					this.getModel().submitChanges();
+				}
+			}
 		},
 		/**
 		 *@memberOf vonovia.timesheet.controller.Worklist
@@ -191,44 +253,44 @@ sap.ui.define([
 		// Get Data from Model an prefill fields
 		_initalizeView: function() {
 			this.getModel().metadataLoaded().then(function() {
-			var sUsername = this.getModel("FLP").getProperty("/username");
-			var sObjectPath = this.getModel().createKey("TIMESHEET_BASISSet", {
-				Username: sUsername
-			});
-			sObjectPath = "/" + sObjectPath;
-			this._bindView(sObjectPath);
-			var sTime = this.getModel().getProperty(sObjectPath + "/AllocatedTime");
+				var sUsername = this.getModel("FLP").getProperty("/username");
+				this._sObjectPath = this.getModel().createKey("TIMESHEET_BASISSet", {
+					Username: sUsername
+				});
+				this._sObjectPath = "/" + this._sObjectPath;
+				this._bindView(this._sObjectPath);
+				var sTime = this.getModel().getProperty(this._sObjectPath + "/AllocatedTime");
 
-			// create default properties
-			var oProperties = {
-				Username: sUsername,
-				SlotMonth: "01",
-				//AllocatedTime: sTime,
-				Keyvalue: "20170111",
-				SlotDate: new Date("2017/11/01"),
-				PresenceTime: "PT9H0M0S",
-				AllocatedTime: "PT9H0M0S",
-				WorkTime: "PT9H0M0S"
-			};
+				// create default properties
+				var oProperties = {
+					Username: sUsername,
+					SlotMonth: "01",
+					//AllocatedTime: sTime,
+					Keyvalue: "20170202",
+					SlotDate: new Date("2017/01/02"),
+					PresenceTime: "PT9H0M0S",
+					AllocatedTime: "PT9H0M0S",
+					WorkTime: "PT9H0M0S"
+				};
 
-			// create new entry in the model
-			this._oContext = this.getModel().createEntry(sObjectPath + "/Slots", {
-				properties: oProperties,
-				success: this._onCreateSuccess.bind(this)
-			});
-			
-			//this.getView().byId("smartForm").bindElement(this._oContext);
-			/*this.getView().byId("smartForm").bindElement({
-				path: sObjectPath,
-				parameters: {
-					expand: "toSlots"
-				}
-			});*/
-			
-			this.getView().byId("smartForm").setBindingContext(this._oContext);
+				// create new entry in the model
+				this._oContext = this.getModel().createEntry(this._sObjectPath + "/Slots", {
+					properties: oProperties,
+					success: this._onCreateSuccess.bind(this)
+				});
 
-			// bind the view to the new entry
-		//	this.get_View().setBindingContext(this._oContext);
+				//this.getView().byId("smartForm").bindElement(this._oContext);
+				/*this.getView().byId("smartForm").bindElement({
+					path: sObjectPath,
+					parameters: {
+						expand: "toSlots"
+					}
+				});*/
+
+				this.getView().byId("smartForm").setBindingContext(this._oContext);
+
+				// bind the view to the new entry
+				//	this.get_View().setBindingContext(this._oContext);
 			}.bind(this));
 		},
 

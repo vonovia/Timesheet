@@ -1,0 +1,181 @@
+[{
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 1",
+	"SlotDate": "/Date(1296718929000)/",
+	"SlotMonth": "SlotMonth 1",
+	"StartTime": "PT4H18M27S",
+	"EndTime": "PT5H51M11S",
+	"BreakDuration": "PT17H26M39S",
+	"CompensationTime": "PT10H37M4S",
+	"Note": "Note 1",
+	"PresenceTime": "PT17H6M50S",
+	"AllocatedTime": "PT5H41M27S",
+	"Freeday": false,
+	"WorkTime": "PT13H52M27S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%201',Keyvalue='Keyvalue%201')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 2",
+	"SlotDate": "/Date(1105256529000)/",
+	"SlotMonth": "SlotMonth 2",
+	"StartTime": "PT12H53M12S",
+	"EndTime": "PT4H23M0S",
+	"BreakDuration": "PT20H24M50S",
+	"CompensationTime": "PT15H53M19S",
+	"Note": "Note 2",
+	"PresenceTime": "PT1H19M18S",
+	"AllocatedTime": "PT1H42M38S",
+	"Freeday": false,
+	"WorkTime": "PT16H21M56S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%202',Keyvalue='Keyvalue%202')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 3",
+	"SlotDate": "/Date(1233906129000)/",
+	"SlotMonth": "SlotMonth 3",
+	"StartTime": "PT12H22M38S",
+	"EndTime": "PT13H41M0S",
+	"BreakDuration": "PT5H11M26S",
+	"CompensationTime": "PT18H51M16S",
+	"Note": "Note 3",
+	"PresenceTime": "PT20H29M37S",
+	"AllocatedTime": "PT14H37M20S",
+	"Freeday": true,
+	"WorkTime": "PT4H13M23S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%203',Keyvalue='Keyvalue%203')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 4",
+	"SlotDate": "/Date(1288161729000)/",
+	"SlotMonth": "SlotMonth 4",
+	"StartTime": "PT14H15M54S",
+	"EndTime": "PT8H18M32S",
+	"BreakDuration": "PT11H12M39S",
+	"CompensationTime": "PT5H35M13S",
+	"Note": "Note 4",
+	"PresenceTime": "PT2H48M42S",
+	"AllocatedTime": "PT20H49M1S",
+	"Freeday": false,
+	"WorkTime": "PT12H48M48S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%204',Keyvalue='Keyvalue%204')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 5",
+	"SlotDate": "/Date(1336804929000)/",
+	"SlotMonth": "SlotMonth 5",
+	"StartTime": "PT11H1M18S",
+	"EndTime": "PT8H41M31S",
+	"BreakDuration": "PT4H13M7S",
+	"CompensationTime": "PT4H37M18S",
+	"Note": "Note 5",
+	"PresenceTime": "PT0H45M55S",
+	"AllocatedTime": "PT21H26M33S",
+	"Freeday": false,
+	"WorkTime": "PT2H23M52S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%205',Keyvalue='Keyvalue%205')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 6",
+	"SlotDate": "/Date(1182235329000)/",
+	"SlotMonth": "SlotMonth 6",
+	"StartTime": "PT0H49M10S",
+	"EndTime": "PT2H18M9S",
+	"BreakDuration": "PT16H7M10S",
+	"CompensationTime": "PT22H50M46S",
+	"Note": "Note 6",
+	"PresenceTime": "PT2H7M45S",
+	"AllocatedTime": "PT0H57M23S",
+	"Freeday": true,
+	"WorkTime": "PT1H23M32S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%206',Keyvalue='Keyvalue%206')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 7",
+	"SlotDate": "/Date(1572072129000)/",
+	"SlotMonth": "SlotMonth 7",
+	"StartTime": "PT6H25M55S",
+	"EndTime": "PT2H30M57S",
+	"BreakDuration": "PT3H55M13S",
+	"CompensationTime": "PT16H20M14S",
+	"Note": "Note 7",
+	"PresenceTime": "PT17H25M13S",
+	"AllocatedTime": "PT15H23M30S",
+	"Freeday": true,
+	"WorkTime": "PT5H17M25S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%207',Keyvalue='Keyvalue%207')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 8",
+	"SlotDate": "/Date(1312958529000)/",
+	"SlotMonth": "SlotMonth 8",
+	"StartTime": "PT13H17M13S",
+	"EndTime": "PT3H33M11S",
+	"BreakDuration": "PT1H31M20S",
+	"CompensationTime": "PT1H20M50S",
+	"Note": "Note 8",
+	"PresenceTime": "PT18H32M24S",
+	"AllocatedTime": "PT1H40M37S",
+	"Freeday": false,
+	"WorkTime": "PT13H4M29S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%208',Keyvalue='Keyvalue%208')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 9",
+	"SlotDate": "/Date(1431153729000)/",
+	"SlotMonth": "SlotMonth 9",
+	"StartTime": "PT9H20M31S",
+	"EndTime": "PT3H32M20S",
+	"BreakDuration": "PT22H7M23S",
+	"CompensationTime": "PT17H27M9S",
+	"Note": "Note 9",
+	"PresenceTime": "PT16H41M26S",
+	"AllocatedTime": "PT2H43M26S",
+	"Freeday": false,
+	"WorkTime": "PT16H25M43S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%209',Keyvalue='Keyvalue%209')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}, {
+	"Username": "ENGELCH",
+	"Keyvalue": "Keyvalue 10",
+	"SlotDate": "/Date(1460356929000)/",
+	"SlotMonth": "SlotMonth 10",
+	"StartTime": "PT19H3M9S",
+	"EndTime": "PT6H14M39S",
+	"BreakDuration": "PT3H25M4S",
+	"CompensationTime": "PT10H32M3S",
+	"Note": "Note 10",
+	"PresenceTime": "PT7H20M5S",
+	"AllocatedTime": "PT6H25M57S",
+	"Freeday": false,
+	"WorkTime": "PT9H9M41S",
+	"__metadata": {
+		"uri": "TIMESHEET_SLOTSet(Username='Username%2010',Keyvalue='Keyvalue%2010')",
+		"type": "/VTIS/UI_TIMESHEET_V2_SRV.TIMESHEET_SLOT"
+	}
+}]

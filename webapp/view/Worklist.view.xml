@@ -6,7 +6,7 @@
 		<semantic:content>
 			<l:ResponsiveFlowLayout>
 				<l:content>
-					<uni:Calendar ariaLabelledBy="__xmlview0--nameColumnTitle" id="calendar" intervalSelection="false" singleSelection="true" firstDayOfWeek="1" select="handleCalendarSelect">
+					<uni:Calendar ariaLabelledBy="__xmlview0--nameColumnTitle" id="calendar" intervalSelection="false" singleSelection="true" firstDayOfWeek="1" select="handleCalendarSelect" startDateChange="handleCalendarChange">
 						<uni:layoutData>
 							<l:ResponsiveFlowLayoutData minWidth="300"/>
 						</uni:layoutData>
@@ -21,27 +21,27 @@
 								<sap.ui.comp.smartform:groupElements>
 									<sap.ui.comp.smartform:GroupElement id="__element4">
 										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field0" value="{StartTime}"/>
+											<sap.ui.comp.smartfield:SmartField id="__field0" value="{StartTime}"/>
 										</sap.ui.comp.smartform:elements>
 									</sap.ui.comp.smartform:GroupElement>
 									<sap.ui.comp.smartform:GroupElement id="__element5">
 										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field1" value="{EndTime}"/>
+											<sap.ui.comp.smartfield:SmartField id="__field1" value="{EndTime}"/>
 										</sap.ui.comp.smartform:elements>
 									</sap.ui.comp.smartform:GroupElement>
 									<sap.ui.comp.smartform:GroupElement id="__element6">
 										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field2" value="{BreakDuration}"/>
+											<sap.ui.comp.smartfield:SmartField id="__field2" value="{BreakDuration}"/>
 										</sap.ui.comp.smartform:elements>
 									</sap.ui.comp.smartform:GroupElement>
 									<sap.ui.comp.smartform:GroupElement id="__element7">
 										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field3" value="{CompensationTime}"/>
+											<sap.ui.comp.smartfield:SmartField id="__field3" value="{CompensationTime}"/>
 										</sap.ui.comp.smartform:elements>
 									</sap.ui.comp.smartform:GroupElement>
 									<sap.ui.comp.smartform:GroupElement id="__element8">
 										<sap.ui.comp.smartform:elements>
-											<sap.ui.comp.smartfield:SmartField controlContext="Form" id="__field4" value="{Note}"/>
+											<sap.ui.comp.smartfield:SmartField id="__field4" value="{Note}"/>
 										</sap.ui.comp.smartform:elements>
 									</sap.ui.comp.smartform:GroupElement>
 								</sap.ui.comp.smartform:groupElements>
@@ -51,8 +51,14 @@
 				</l:content>
 			</l:ResponsiveFlowLayout>
 			<Table busy="{worklistView>/busy}" id="table" width="auto" class="sapUiResponsiveMargin"
-				items="{ path: 'Slots', sorter: { path: 'SlotDate', descending: false } }" noDataText="{worklistView>/tableNoDataText}"
+				items="{ path: 'Slots', sorter: { path: 'SlotDate', descending: false } }"
+						 noDataText="{worklistView>/tableNoDataText}"
 				busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+								<!-- 
+								filters: {-->
+				<!--		path: 'SlotMonth',-->
+				<!--		operator: 'EQ',-->
+				<!--		value1: '{{worklistView>/monthFilter}}' }-->
 				<headerToolbar>
 					<Toolbar>
 						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
@@ -87,9 +93,8 @@
 								id="__identifier0" editable="false"/>
 							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker0"
 								value="{path: 'WorkTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<Text text="{Note}" id="__text1"/>
-							<TimePicker placeholder="HH:mm:ss" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm:ss" localeId="de-DE" id="__picker3"
-								editable="false" value="{path: 'Saldo', type: 'sap.ui.model.odata.type.Time'}"/>
+							<Text text="{Note}" id="Note"/>
+							<Text text="{path: 'Saldo' ,  formatter: '.formatter.saldo'}" id="Saldo"/>
 						</cells>
 					</ColumnListItem>
 				</items>

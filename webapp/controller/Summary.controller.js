@@ -1,4 +1,5 @@
 /*global location*/
+//jQuery.sap.registerModulePath("SignaturePad", "../model/type/SignaturePad");
 sap.ui.define([
 	"vonovia/timesheet/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
@@ -25,12 +26,12 @@ sap.ui.define([
 		 * @public
 		 */
 		onInit: function() {
-				var oViewModel, iOriginalBusyDelay, oTable = this.byId("table");
+			var oViewModel, iOriginalBusyDelay, oTable = this.byId("summaryTable");
 			// Put down worklist table's original value for busy indicator delay,
 			// so it can be restored later on. Busy handling on the table is
 			// taken care of by the table itself.
 			iOriginalBusyDelay = oTable.getBusyIndicatorDelay();
-			
+
 			oViewModel = new JSONModel({
 				worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
 				tableBusyDelay: 0
@@ -73,7 +74,7 @@ sap.ui.define([
 			}
 			this.getModel("summaryView").setProperty("/worklistTableTitle", sTitle);
 		},
-		
+
 		/**
 		 * Event handler  for navigating back.
 		 * It there is a history entry or an previous app-to-app navigation we go one step back in the browser history
@@ -96,12 +97,13 @@ sap.ui.define([
 		/* =========================================================== */
 
 		_onObjectMatched: function(oEvent) {
+			var month = oEvent.getParameter("arguments").month;
 			this.getModel().metadataLoaded().then(function() {
 				var sUsername = this.getModel("appView").getProperty("/username");
 				var sObjectPath = this.getModel().createKey("TIMESHEET_BASISSet", {
-					Username : sUsername
+					Username: sUsername
 				});
-				this._bindView("/" + sObjectPath);
+				this._bindView("/" + sObjectPath, month);
 			}.bind(this));
 		},
 
@@ -111,14 +113,21 @@ sap.ui.define([
 		 * @param {string} sObjectPath path to the object to be bound
 		 * @private
 		 */
-		_bindView: function(sObjectPath) {
+		_bindView: function(sObjectPath, month) {
 
+			var oTable = this.byId("summaryTable");
 			this.getView().bindElement({
 				path: sObjectPath,
 				parameters: {
 					expand: "Slots"
 				}
 			});
+			//oTable.bindElement({ path: "Slots", sorter: { path: "SlotDate", descending: false }, filters: {	path: "SlotMonth" ,operator: "EQ" ,value1: "12" }});
+			if (month < 10) {
+				month = "0" + month;
+			}
+			var oFilterMonth = new sap.ui.model.Filter("SlotMonth", sap.ui.model.FilterOperator.EQ, month);
+			oTable.getBinding("items").filter([oFilterMonth]);
 		}
 
 	});

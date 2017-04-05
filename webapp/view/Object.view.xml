@@ -1,38 +1,80 @@
-<mvc:View
-	controllerName="vonovia.timesheet.controller.Object"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:footerbar="sap.ushell.ui.footerbar">
-
-	<semantic:FullscreenPage
-		id="page"
-		navButtonPress="onNavBack"
-		showNavButton="true"
-		title="{i18n>objectTitle}"
-		busy="{objectView>/busy}"
-		busyIndicatorDelay="{objectView>/delay}">
-
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="vonovia.timesheet.controller.Object">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
 		<semantic:content>
-			<ObjectHeader
-				id="objectHeader"
-				title="{SlotDate}"
->
-			</ObjectHeader>
- 		</semantic:content>
-
+			<ObjectHeader id="objectHeader" title="{path: 'SlotDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'short', strictParsing: true}}"/>
+			<sap.ui.comp.smartform:SmartForm xmlns:sap.ui.comp.smartform="sap.ui.comp.smartform" xmlns:sap.ui.comp.smartfield="sap.ui.comp.smartfield" id="smartFormChange" editable="true" entityType="TIMESHEET_SLOT">
+				<sap.ui.comp.smartform:groups>
+					<sap.ui.comp.smartform:Group label="Zeiterfassung" id="__group1">
+						<sap.ui.comp.smartform:groupElements>
+							<sap.ui.comp.smartform:GroupElement id="__element10">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field6" value="{path: 'SlotDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'short', strictParsing: true}}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element4">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field0" value="{StartTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element5">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field1" value="{EndTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element6">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field2" value="{BreakDuration}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element7">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field3" value="{CompensationTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element8">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field4" value="{Note}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement>
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField value="{WorkTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement>
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField value="{PresenceTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement>
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField value="{AllocatedTime}"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+							<sap.ui.comp.smartform:GroupElement id="__element11">
+								<sap.ui.comp.smartform:elements>
+									<sap.ui.comp.smartfield:SmartField id="__field7" value="{path: 'Saldo' , formatter: '.formatter.saldo'}" press="onPress"/>
+								</sap.ui.comp.smartform:elements>
+							</sap.ui.comp.smartform:GroupElement>
+						</sap.ui.comp.smartform:groupElements>
+					</sap.ui.comp.smartform:Group>
+				</sap.ui.comp.smartform:groups>
+			</sap.ui.comp.smartform:SmartForm>
+		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
-
 		<semantic:shareInJamAction>
 			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
 		</semantic:shareInJamAction>
-
 		<semantic:saveAsTileAction>
-			<footerbar:AddBookmarkButton id ="shareTile" title="{objectView>/saveAsTileTitle}" />
+			<footerbar:AddBookmarkButton id="shareTile" title="{objectView>/saveAsTileTitle}"/>
 		</semantic:saveAsTileAction>
-
+	<semantic:saveAction>
+	    <semantic:SaveAction id="__action0" press="onSave"/>
+	</semantic:saveAction>
+	<semantic:deleteAction>
+	    <semantic:DeleteAction id="delete" press="onDelete"/>
+	</semantic:deleteAction>
 	</semantic:FullscreenPage>
-
 </mvc:View>

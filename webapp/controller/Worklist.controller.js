@@ -12,6 +12,7 @@ sap.ui.define([
 		formatter: formatter,
 		oFormatYyyymmdd: null,
 		_sObjectPath: null,
+		month: "00",
 		/* =========================================================== */
 		/* lifecycle methods                                           */
 		/* =========================================================== */
@@ -36,23 +37,29 @@ sap.ui.define([
 				shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailWorklistMessage", [location.href]),
 				tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
 				tableBusyDelay: 0,
-				busy: true
+				busy: true,
+				backNav: false,
+				monthFilter: 12
 			});
 			this.setModel(oViewModel, "worklistView");
 
-			this.getRouter().attachRoutePatternMatched(this._initalizeView, this);
+			this.getRouter().getRoute("worklist").attachPatternMatched(this._initalizeView, this);
 			// Make sure, busy indication is showing immediately so there is no
 			// break after the busy indication for loading the view's meta data is
 			// ended (see promise 'oWhenMetadataIsLoaded' in AppController)
+
 			oTable.attachEventOnce("updateFinished", function() {
 				// Restore original busy indicator delay for worklist's table
 				oViewModel.setProperty("/tableBusyDelay", iOriginalBusyDelay);
 				oViewModel.setProperty("/busy", false);
 				// initalize new Entry Fields
 			});
+			//oTable.filter();
 			//this.getOwnerComponent().getModel().metadataLoaded().then(this._initalizeView());
 
-			this.oFormatYyyymmdd = sap.ui.core.format.DateFormat.getDateInstance({pattern : "YYYYMMdd"});
+			this.oFormatYyyymmdd = sap.ui.core.format.DateFormat.getDateInstance({
+				pattern: "YYYYMMdd"
+			});
 
 		},
 		/* =========================================================== */
@@ -169,6 +176,15 @@ sap.ui.define([
 				this.setModel(oData, "dataCalendar");
 			}
 		},
+		handleCalendarChange: function(oEvent) {
+			var oTable = this.byId("table");
+			var date = oEvent.getSource().getStartDate();
+			this.month = date.getMonth() + 1;
+			
+			var oFilterMonth = new sap.ui.model.Filter("SlotMonth", sap.ui.model.FilterOperator.EQ, this.month);
+			oTable.getBinding("items").filter([oFilterMonth]);
+		},
+
 		/* =========================================================== */
 		/* internal methods                                            */
 		/* =========================================================== */
@@ -179,8 +195,10 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject: function(oItem) {
+			//	this.getModel().deleteCreatedEntry(this._oContext);
+			this.getModel().refresh();
 			this.getRouter().navTo("object", {
-				objectId: oItem.getBindingContext().getProperty("Keyvalue")
+				objectId: oItem.getBindingContext().getProperty("KeyValue")
 			});
 		},
 		/**
@@ -208,30 +226,27 @@ sap.ui.define([
 			var oModel = oContext.getModel();
 			var sPath = oContext.getPath();
 			var oPropertiesNew = {
-					Username: oProperties.sUsername,
-					SlotMonth: "02",
-					//AllocatedTime: sTime,
-					//Keyvalue: "20170202",
-					//SlotDate: new Date("2017/01/02"),
-					PresenceTime: "PT9H0M0S",
-					AllocatedTime: "PT9H0M0S",
-					WorkTime: "PT9H0M0S",
-					StartTime: oProperties.StartTime,
-					EndTime: oProperties.EndTime
-				};
-			
+				Username: oProperties.sUsername,
+				SlotMonth: "02",
+				//AllocatedTime: sTime,
+				//Keyvalue: "20170202",
+				//SlotDate: new Date("2017/01/02"),
+				PresenceTime: "PT9H0M0S",
+				AllocatedTime: "PT9H0M0S",
+				WorkTime: "PT9H0M0S",
+				StartTime: oProperties.StartTime,
+				EndTime: oProperties.EndTime
+			};
+
 			if (oData && oData.selectedDates.length > 0) {
 				for (var i = 0; i < oData.selectedDates.length; i++) {
-					oPropertiesNew.Keyvalue = this.oFormatYyyymmdd.format(oData.selectedDates[i]);
+					oPropertiesNew.KeyValue = this.oFormatYyyymmdd.format(oData.selectedDates[i]);
 					oPropertiesNew.SlotDate = oData.selectedDates[i];
 					oPropertiesNew.SlotMonth = oData.selectedDates[i].getMonth() + 1;
 					if (i === 0) {
-						oModel.setProperty(sPath + "/Keyvalue", oPropertiesNew.Keyvalue);
+						oModel.setProperty(sPath + "/KeyValue", oPropertiesNew.KeyValue);
 						oModel.setProperty(sPath + "/SlotDate", oPropertiesNew.SlotDate);
 						oModel.setProperty(sPath + "/SlotMonth", oPropertiesNew.SlotMonth.toString());
-						//oModel.refresh();
-						
-						//var object = oModel.getProperty(sPath + "/Keyvalue");
 					} else {
 
 						oModel.createEntry(this._sObjectPath + "/Slots", {
@@ -247,57 +262,82 @@ sap.ui.define([
 		 *@memberOf vonovia.timesheet.controller.Worklist
 		 */
 		_showSummary: function() {
-			this.getRouter().navTo("summary");
+			this.getRouter().navTo("summary", { month: this.month });
 		},
 
 		// Get Data from Model an prefill fields
 		_initalizeView: function() {
-			this.getModel().metadataLoaded().then(function() {
-				var sUsername = this.getModel("FLP").getProperty("/username");
+			if (this.getModel("worklistView").getProperty("backNav") === true) {
+				this._initSmartForm();
+				this.getModel("worklistView").setProperty("backNav", false);
+			}
+			//this.getModel().metadataLoaded().then(function() {
+			var sUsername = this.getModel("FLP").getProperty("/username");
+			if (this._sObjectPath) {
+				// this._sObjectPath = this.getModel().createKey("TIMESHEET_BASISSet", {
+				// 	Username: sUsername
+				// });
+			} else {
 				this._sObjectPath = this.getModel().createKey("TIMESHEET_BASISSet", {
 					Username: sUsername
 				});
 				this._sObjectPath = "/" + this._sObjectPath;
 				this._bindView(this._sObjectPath);
-				var sTime = this.getModel().getProperty(this._sObjectPath + "/AllocatedTime");
+				this._initSmartForm();
+			}
 
-				// create default properties
-				var oProperties = {
-					Username: sUsername,
-					SlotMonth: "01",
-					//AllocatedTime: sTime,
-					Keyvalue: "20170202",
-					SlotDate: new Date("2017/01/02"),
-					PresenceTime: "PT9H0M0S",
-					AllocatedTime: "PT9H0M0S",
-					WorkTime: "PT9H0M0S"
-				};
+			// bind the view to the new entry
+			//	this.get_View().setBindingContext(this._oContext);
+			//	}.bind(this));
+		},
 
-				// create new entry in the model
-				this._oContext = this.getModel().createEntry(this._sObjectPath + "/Slots", {
-					properties: oProperties,
-					success: this._onCreateSuccess.bind(this)
-				});
+		_initSmartForm: function() {
+			var sUsername = this.getModel("FLP").getProperty("/username");
+			// create default properties
+			var oProperties = {
+				Username: sUsername,
+				//SlotMonth: "00",
+				//KeyValue: "00000000"
+				//SlotDate: new Date("2017/01/02"),
+				//PresenceTime: "PT9H0M0S",
+				//AllocatedTime: "PT9H0M0S",
+				//WorkTime: "PT9H0M0S"
+			};
 
-				//this.getView().byId("smartForm").bindElement(this._oContext);
-				/*this.getView().byId("smartForm").bindElement({
-					path: sObjectPath,
-					parameters: {
-						expand: "toSlots"
-					}
-				});*/
+			// create new entry in the model
+			this._oContext = this.getModel().createEntry(this._sObjectPath + "/Slots", {
+				properties: oProperties,
+				success: this._onCreateSuccess.bind(this),
+				error: this._onCreateError.bind(this)
+			});
 
-				this.getView().byId("smartForm").setBindingContext(this._oContext);
+			//this.getView().byId("smartForm").bindElement(this._oContext);
+			/*this.getView().byId("smartForm").bindElement({
+				path: sObjectPath,
+				parameters: {
+					expand: "toSlots"
+				}
+			});*/
 
-				// bind the view to the new entry
-				//	this.get_View().setBindingContext(this._oContext);
-			}.bind(this));
+			this.getView().byId("smartForm").setBindingContext(this._oContext);
 		},
 
 		_onCreateSuccess: function(oProduct) {
 
 			// show success messge
-			var sMessage = this.getResourceBundle().getText("newObjectCreated", [oProduct.Name]);
+			var sMessage = this.getResourceBundle().getText("Neuer Eintrag erfolgreich angelegt", [oProduct.SlotDate]);
+			MessageToast.show(sMessage, {
+				closeOnBrowserNavigation: false
+			});
+			this.getRouter().navTo("object", {
+				objectId: oProduct.KeyValue
+			});
+		},
+
+		_onCreateError: function(oProduct) {
+
+			// show success messge
+			var sMessage = this.getResourceBundle().getText("Fehler bei Anlage", [oProduct.SlotDate]);
 			MessageToast.show(sMessage, {
 				closeOnBrowserNavigation: false
 			});
@@ -309,13 +349,18 @@ sap.ui.define([
 		 * @private
 		 */
 		_bindView: function(sObjectPath) {
-
+			var oTable = this.byId("table");
+			var today = new Date();
+			this.month = today.getMonth() + 1;
 			this.getView().bindElement({
 				path: sObjectPath,
 				parameters: {
 					expand: "Slots"
 				}
 			});
+			//oTable.bindElement({ path: "Slots", sorter: { path: "SlotDate", descending: false }, filters: {	path: "SlotMonth" ,operator: "EQ" ,value1: "12" }});
+			var oFilterMonth = new sap.ui.model.Filter("SlotMonth", sap.ui.model.FilterOperator.EQ, this.month );
+			oTable.getBinding("items").filter([oFilterMonth]);
 		}
 
 	});

@@ -1,9 +1,9 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
-	controllerName="vonovia.timesheet.controller.Summary">
+	controllerName="vonovia.timesheet.controller.Summary" xmlns:vonovia="vonovia.timesheet.model.type">
 	<sap.m.semantic:FullscreenPage xmlns:sap.m.semantic="sap.m.semantic" title="Semantic Page" id="__page1" showNavButton="true"
 		navButtonPress="onNavBack">
 		<sap.m.semantic:content>
-			<ObjectListItem  type="Active" title="{NameF} {NameL}" intro="Zeiterfassung" id="nameText">
+			<ObjectListItem type="Active" title="{NameF} {NameL}" intro="Zeiterfassung" id="nameText">
 				<attributes>
 					<ObjectAttribute text="{Pernr}" id="pernrText"/>
 				</attributes>
@@ -14,8 +14,9 @@
 					<ObjectStatus text="{Department}" id="__status1" title="Abteilung"/>
 				</secondStatus>
 			</ObjectListItem>
-			<Table items="{ path: 'toSlots', sorter: { path: 'SlotDate', descending: false } }"
-				noDataText="Drop column list items here and columns in the area above" id="table" busyIndicatorDelay="{summaryView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+			<Table items="{ path: 'Slots', sorter: { path: 'SlotDate', descending: false } }"
+				noDataText="Drop column list items here and columns in the area above" id="summaryTable" busyIndicatorDelay="{summaryView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
 				<items>
 					<ColumnListItem id="__item1">
 						<cells>
@@ -33,8 +34,7 @@
 								value="{path: 'CompensationTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
 							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker5"
 								value="{path: 'AllocatedTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker6"
-								value="{path: 'Saldo', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
+							<Text text="{path: 'Saldo' , formatter: '.formatter.saldo'}" id="Saldo"/>
 							<Text text="{Note}" id="__text1"/>
 						</cells>
 					</ColumnListItem>
@@ -87,6 +87,8 @@
 					</Column>
 				</columns>
 			</Table>
+			<vonovia:SigPad id="sPad"/>
+			<!--<mvc:JSView id="idJSView" viewName="vonovia.timesheet.view.SignaturePadView"/>-->
 		</sap.m.semantic:content>
 	</sap.m.semantic:FullscreenPage>
 </mvc:View>

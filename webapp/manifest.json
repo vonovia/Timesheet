@@ -47,10 +47,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -114,35 +111,23 @@
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"bypassed": {
-					"target": [
-						"notFound"
-					]
+					"target": ["notFound"]
 				},
 				"async": true
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "worklist",
-					"target": [
-						"worklist"
-					]
-				},
-				{
-					"pattern": "TIMESHEET_SLOTSet/{objectId}",
-					"name": "object",
-					"target": [
-						"object"
-					]
-				},
-				{
-					"pattern": "summary/{month}",
-					"name": "summary",
-					"target": [
-						"summary"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "worklist",
+				"target": ["worklist"]
+			}, {
+				"pattern": "TIMESHEET_SLOTSet/{objectId}",
+				"name": "object",
+				"target": ["object"]
+			}, {
+				"pattern": "summary/{month}",
+				"name": "summary",
+				"target": ["summary"]
+			}],
 			"targets": {
 				"worklist": {
 					"viewName": "Worklist",
@@ -168,6 +153,13 @@
 					"viewLevel": 2
 				}
 			}
+		},
+		"resources": {
+			"js": [{
+				"uri": "model/type/jspdf.js"
+			}, {
+				"uri": "model/type/jspdf.plugin.autotable.js"
+			}]
 		}
 	},
 	"sap.platform.hcp": {

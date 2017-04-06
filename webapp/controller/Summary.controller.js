@@ -1,15 +1,18 @@
 /*global location*/
-//jQuery.sap.registerModulePath("SignaturePad", "../model/type/SignaturePad");
+/*jQuery.sap.registerModulePath("jsPDF.autotable", "../model/type/autotable");
+jQuery.sap.registerModulePath("jsPDF", "../model/type/jspdf");*/
 sap.ui.define([
 	"vonovia/timesheet/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/core/routing/History",
 	"vonovia/timesheet/model/formatter"
+	// "jsPDF"
 ], function(
 	BaseController,
 	JSONModel,
 	History,
 	formatter
+	// jsPDF
 ) {
 	"use strict";
 
@@ -128,6 +131,65 @@ sap.ui.define([
 			}
 			var oFilterMonth = new sap.ui.model.Filter("SlotMonth", sap.ui.model.FilterOperator.EQ, month);
 			oTable.getBinding("items").filter([oFilterMonth]);
+		},
+
+		_onCreatePDF: function() {
+			/** @type sap.m.Table */
+			var oTable = this.byId("summaryTable");
+			var oItems = oTable.getItems();
+			var oColumns = oTable.getColumns();
+			var pdfColumns = [];
+			var pdfRows = [];
+
+			for (var index = 0; index < oColumns.length; index++) {
+				var column = {title: oColumns[index].getHeader().getText(), dataKey: index};
+				pdfColumns.push(column);
+			}
+
+			for (var index = 0; index < oItems.length; index++) {
+				var oCells = oItems[index].getCells();
+				var pdfCells = new Object();
+				for (var indexCell = 0; indexCell < oCells.length; indexCell++) {
+					var value = oCells[indexCell]._lastValue;
+					if (indexCell > 0 && indexCell < 7) { value = value.substring(0,5); }
+					if (value == null) {
+						value = oCells[indexCell].getText();
+					}
+					pdfCells[indexCell] = value;
+				}
+				pdfRows.push(pdfCells);
+			}
+			
+			var sig = this.byId("sPad").save();
+			
+			var doc = new jsPDF();
+			doc.setFontSize(18);
+			doc.text(7, 15, "Zeiterfassung");
+			var oPoperties = oTable.getBindingContext().getObject();
+			doc.setFontSize(11);
+			doc.text(7, 20, oPoperties.Pernr);
+			doc.text(7, 25, oPoperties.Company);
+			doc.text(7, 30, oPoperties.Department);
+			doc.autoTable(pdfColumns, pdfRows, {
+			startY: 35,
+				margin: {
+					horizontal: 7
+				},
+				bodyStyles: {
+					valign: 'top'
+				},
+				styles: {
+					overflow: 'linebreak',
+					columnWidth: 'wrap'
+				},
+				columnStyles: {
+					8: {
+						columnWidth: 'auto'
+					}
+				}
+			});
+			doc.addImage(sig,'PNG', 7, doc.autoTable.previous.finalY + 10);
+			doc.save('table.pdf');
 		}
 
 	});

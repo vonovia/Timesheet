@@ -26,7 +26,7 @@ sap.ui.define([], function() {
 			var sSeconds = (iSaldo % 60);
 			sSeconds = sSeconds < 0 ? sSeconds * -1 : sSeconds;
 			var sNullS = sSeconds < 10 ? "0" : "";
-			return sSign + sNull + sHours + ":" + sNullM + sMinutes + ":" + sNullS + sSeconds;
+			return sSign + sNull + sHours + ":" + sNullM + sMinutes ;//+ ":" + sNullS + sSeconds;
 		},
 		presence: function(iStart, iEnd) {
 			return iStart.getTime() - iEnd.getTime();

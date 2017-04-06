@@ -22,17 +22,17 @@
 						<cells>
 							<DatePicker value="{path: 'SlotDate', type:'sap.ui.model.type.Date', formatOptions: { style: 'short', strictParsing: true}}"
 								id="__identifier0" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker0"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker0"
 								value="{path: 'StartTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker1"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker1"
 								value="{path: 'BreakDuration', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker2"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker2"
 								value="{path: 'EndTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker3"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker3"
 								value="{path: 'WorkTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker4"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker4"
 								value="{path: 'CompensationTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
-							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59:59" displayFormat="HH:mm" localeId="de-DE" id="__picker5"
+							<TimePicker placeholder="HH:mm" placeholderSymbol="-" mask="h9:59" displayFormat="HH:mm" localeId="de-DE" id="__picker5"
 								value="{path: 'AllocatedTime', type: 'sap.ui.model.odata.type.Time'}" editable="false"/>
 							<Text text="{path: 'Saldo' , formatter: '.formatter.saldo'}" id="Saldo"/>
 							<Text text="{Note}" id="__text1"/>
@@ -90,5 +90,8 @@
 			<vonovia:SigPad id="sPad"/>
 			<!--<mvc:JSView id="idJSView" viewName="vonovia.timesheet.view.SignaturePadView"/>-->
 		</sap.m.semantic:content>
+		<sap.m.semantic:customFooterContent>
+			<Button text="PDF" width="100px" id="pdf" press="_onCreatePDF"/>
+		</sap.m.semantic:customFooterContent>
 	</sap.m.semantic:FullscreenPage>
 </mvc:View>

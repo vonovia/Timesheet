@@ -195,7 +195,7 @@ sap.ui.define([
 		 * @private
 		 */
 		_showObject: function(oItem) {
-			//	this.getModel().deleteCreatedEntry(this._oContext);
+			this.getModel().deleteCreatedEntry(this._oContext);
 			this.getModel().refresh();
 			this.getRouter().navTo("object", {
 				objectId: oItem.getBindingContext().getProperty("KeyValue")
